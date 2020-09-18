@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { PersonalComponent } from './personal/personal.component';
 import { ProductsComponent } from './products/products.component';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { ProductsComponent } from './products/products.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
