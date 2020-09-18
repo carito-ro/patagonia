@@ -1,1 +1,8 @@
-<p>gallery works!</p>
+<div class="my-4 d-flex justify-content-end">
+  <button type="button" class="btn btn-outline-info " (click)="onUpload()">Upload</button>
+</div>
+<div class="card-columns">
+  <div *ngFor="let item of arrPictures">
+    <app-picture [data]="item" (deleteId)="deletePicture($event)"></app-picture>
+  </div>
+</div>

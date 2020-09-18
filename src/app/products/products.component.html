@@ -1,0 +1,27 @@
+<div class="row h-100 align-items-center">
+  <div class="col col-lg-11 center">
+    <div class="table-res">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" *ngFor="let item of headerTable">{{item}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let item of arrProduct">
+            <th scope="row">{{item.number}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.sku}}</td>
+            <td>{{item.weight}}</td>
+            <td>{{item.height}}</td>
+            <td>{{item.width}}</td>
+            <td>{{item.origin}}</td>
+            <td>{{item.minimum}}</td>
+            <td>{{item.delay}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

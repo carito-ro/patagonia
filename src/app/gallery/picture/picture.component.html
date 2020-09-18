@@ -1,1 +1,12 @@
-<p>picture works!</p>
+<div class="card">
+  <img [src]="data.image" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title ">{{data.title}}
+    </h5>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-sm btn-light m-1 icon-delete" (click)="onDelete(data._id)">
+        Delete <span class="material-icons">delete</span>
+      </button>
+    </div>
+  </div>
+</div>

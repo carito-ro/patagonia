@@ -1,4 +1,4 @@
-import { ProductComponent } from './product/product.component';
+import { ProductsComponent } from './products/products.component';
 import { PersonalComponent } from './personal/personal.component';
 import { AdminLagoutComponent } from './admin-lagout/admin-lagout.component';
 import { NgModule } from '@angular/core';
@@ -10,12 +10,12 @@ const routes: Routes = [
     component: AdminLagoutComponent,
     children: [
       {
-        path: 'personal',
+        path: '',
         component: PersonalComponent,
       },
       {
-        path: 'product',
-        component: ProductComponent,
+        path: 'products',
+        component: ProductsComponent,
       },
       {
         path: 'gallery',

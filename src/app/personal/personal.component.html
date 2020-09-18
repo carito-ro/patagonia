@@ -1,1 +1,15 @@
-<p>personal works!</p>
+<div class="row h-75 align-items-center justify-content-center">
+  <div class="col-10 col-md-8 col-lg-6  ">
+    <div class="card text-center">
+      <div class="pt-5">
+        <img [src]="person.image" class="card-img-top image rounded-circle" alt="Avatar person">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Hola, {{person.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{person.email}}</h6>
+        <p class="card-text text-justify">{{person.aboutMe}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

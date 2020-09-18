@@ -1,1 +1,9 @@
-<p>add-picture works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <input formControlName="title" class="form-control form-control-sm" type="text" placeholder="Title">
+    <label>Share image..</label>
+    <input formControlName="image" type="file" class="form-control-file" (change)="onFileChange($event)">
+  </div>
+  <button class="btn btn-outline-secondary" type="submit" [disabled]="form.invalid "
+    id="inputGroupFileAddon03">Button</button>
+</form>

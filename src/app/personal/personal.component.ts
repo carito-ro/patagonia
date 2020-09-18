@@ -1,3 +1,5 @@
+import { Person } from './../models/person';
+import { HardcodeService } from './../services/hardcode.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalComponent implements OnInit {
 
-  constructor() { }
+  public person: Person;
+  constructor(
+    private _hardcodeService: HardcodeService
+  ) {
+    this.person = this._hardcodeService.person;
+  }
 
   ngOnInit(): void {
   }
