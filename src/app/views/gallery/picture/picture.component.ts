@@ -1,6 +1,6 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Picture } from '../../models/picture'
+import { Picture } from '../../../shared/models/picture'
 
 @Component({
   selector: 'app-picture',

@@ -1,4 +1,4 @@
-import { GalleryService } from './../../services/gallery.service';
+import { GalleryService } from '../../../shared/services/gallery.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';

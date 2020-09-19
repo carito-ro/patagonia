@@ -1,5 +1,5 @@
-import { PersonService } from './../services/person.service';
-import { Person } from './../models/person';
+import { PersonService } from '../../shared/services/person.service';
+import { Person } from '../../shared/models/person';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 @Component({

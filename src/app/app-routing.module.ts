@@ -1,6 +1,6 @@
-import { ProductsComponent } from './products/products.component';
-import { PersonalComponent } from './personal/personal.component';
-import { AdminLagoutComponent } from './admin-lagout/admin-lagout.component';
+import { ProductsComponent } from './views/products/products.component';
+import { PersonalComponent } from './views/personal/personal.component';
+import { AdminLagoutComponent } from './shared/admin-lagout/admin-lagout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -22,13 +22,12 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule),
+            loadChildren: () => import('./views/gallery/gallery.module').then(m => m.GalleryModule),
           },
         ]
       },
     ]
   },
-
 ];
 
 @NgModule({

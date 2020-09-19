@@ -1,7 +1,7 @@
 
-import { GalleryService } from './../../services/gallery.service';
+import { GalleryService } from '../../../shared/services/gallery.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Picture } from '../../models/picture';
+import { Picture } from '../../../shared/models/picture';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 @Component({
