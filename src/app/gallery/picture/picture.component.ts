@@ -13,7 +13,7 @@ export class PictureComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  onDelete(_id: string) {
-    this.deleteId.emit(_id);
+  onDelete(id: string) {
+    this.deleteId.emit(id);
   }
 }

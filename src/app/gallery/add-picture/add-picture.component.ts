@@ -1,18 +1,17 @@
 import { GalleryService } from './../../services/gallery.service';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-add-picture',
   templateUrl: './add-picture.component.html',
   styleUrls: ['./add-picture.component.scss']
 })
-export class AddPictureComponent implements OnInit, OnDestroy {
+export class AddPictureComponent implements OnInit {
   public form: FormGroup;
   public error: string;
   public message: string;
-  imageSubj: Subscription;
+  public spinner: boolean;
   constructor(
     public _router: Router,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -27,22 +26,20 @@ export class AddPictureComponent implements OnInit, OnDestroy {
       image: new FormControl('', [Validators.required])
     });
   }
-  onSubmit() {
-    this.imageSubj = this._galleryService.requestAddImage$(this.form.value)
-      .subscribe(
-        data => {
-          if (!data) {
-            this.error = 'alert-danger';
-            this.message = 'Image not uploaded..'
-          } else {
-            // this._router.navigate(['/gallery']);
-          }
-        }, error => {
-          this.error = 'alert-warning';
-          this.message = 'Error: Image not uploaded..'
-          console.log(error);
-        }
-      );
+  async onSubmit() {
+    this.spinner = true;
+    try {
+      const response = await this._galleryService.addPicture(this.form.value);
+      if (response) {
+        this.spinner = false;
+        this._router.navigate(['/gallery']);
+      }
+    } catch (error) {
+      this.error = 'alert-warning';
+      this.message = 'Error: Image not uploaded..'
+      this.spinner = false;
+      console.log(error);
+    }
   }
   onImageChange(event) {
     const reader = new FileReader();
@@ -56,8 +53,5 @@ export class AddPictureComponent implements OnInit, OnDestroy {
         this._changeDetectorRef.markForCheck();
       };
     }
-  }
-  ngOnDestroy() {
-    this.imageSubj ? this.imageSubj.unsubscribe() : '';
   }
 }

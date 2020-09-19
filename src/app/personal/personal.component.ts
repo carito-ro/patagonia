@@ -1,6 +1,5 @@
 import { PersonService } from './../services/person.service';
 import { Person } from './../models/person';
-import { HardcodeService } from './../services/hardcode.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 @Component({
@@ -12,27 +11,29 @@ export class PersonalComponent implements OnInit, OnDestroy {
   personSubj: Subscription;
   public person: Person;
   public error: boolean;
+  public spinner: boolean;
   constructor(
-    private _hardcodeService: HardcodeService,
     private _personService: PersonService
   ) {
     this.error = false;
-    this.person = this._hardcodeService.person;
   }
 
   ngOnInit(): void {
-    // this.getPerson();
+    this.getPerson();
   }
   /**
-   *  Recupera los datos de la personal, parte del supuesto que está logiado
+   * Recupera los datos de la personal, parte del supuesto que está logiado
+   * recuperando el usuario pasando un ID
    *
    * @memberof PersonalComponent
    */
   getPerson() {
-    this.personSubj = this._personService.requestPersonData$('_id=1')
+    this.spinner = true;
+    this.personSubj = this._personService.getPerson$("IAILGsSbBSLHUXpOXxTq")
       .subscribe(
         data => {
-          this.person = data;
+          this.person = data.payload.data();
+          this.spinner = false;
         }, error => {
           this.error = true;
           console.log(error);

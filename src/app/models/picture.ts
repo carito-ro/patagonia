@@ -1,5 +1,7 @@
 export interface Picture {
-  _id: string,
-  title: string,
-  image: string,
+  id: string,
+  data: {
+    title: string,
+    image: string,
+  }
 }

@@ -1,7 +1,10 @@
 <div class="row h-100 align-items-center">
-  <div class="col col-lg-11 center">
-    <div class="table-res">
-      <table class="table">
+  <div class="col col-lg-11 center text-center">
+    <div *ngIf="spinner" class="spinner-border text-success" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div *ngIf="!spinner" class="table-res">
+      <table class="table table-bordered table-hover shadow ">
         <thead class="thead-dark">
           <tr>
             <th scope="col" *ngFor="let item of headerTable">{{item}}</th>
@@ -9,16 +12,16 @@
         </thead>
         <tbody>
           <tr mdbTableCol *ngFor="let item of arrProduct">
-            <th scope="row">{{item.number}}</th>
-            <td>{{item.name}}</td>
-            <td>{{item.date}}</td>
-            <td>{{item.sku}}</td>
-            <td>{{item.weight}}</td>
-            <td>{{item.height}}</td>
-            <td>{{item.width}}</td>
-            <td>{{item.origin}}</td>
-            <td>{{item.minimum}}</td>
-            <td>{{item.delay}}</td>
+            <th scope="row">{{(item.data.number | number )}}</th>
+            <td>{{item.data.name}}</td>
+            <td>{{item.data.date | date: 'dd/MM/yyyy'}}</td>
+            <td>{{item.data.sku}}</td>
+            <td>{{item.data.weight}}</td>
+            <td>{{item.data.height}}</td>
+            <td>{{item.data.width}}</td>
+            <td>{{item.data.origin}}</td>
+            <td>{{item.data.minimum}}</td>
+            <td>{{item.data.delay}}</td>
           </tr>
         </tbody>
       </table>

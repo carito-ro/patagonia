@@ -1,3 +1,10 @@
+.table {
+	background-color: #fff;
+}
+.table .thead-dark th {
+	color: rgb(68, 194, 66);
+}
+
 @media (max-width: 960px) {
 	.table-res {
 		width: 100%;

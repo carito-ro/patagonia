@@ -1,9 +1,20 @@
 .navbar-brand {
 	background-image: url('../../assets/logo.png');
-	width: 85px;
+	width: 140px;
 	height: 54px;
-	background-size: 80px;
+	background-size: 135px;
 	background-repeat: no-repeat;
 	padding: 10px;
 	background-position: center center;
+}
+.btn.focus,
+.btn:focus {
+	outline: 0;
+	box-shadow: 0 0 0 0.05rem #44c242;
+}
+.navbar-dark .navbar-toggler {
+	border-color: rgb(68, 194, 66) !important;
+}
+a {
+	color: #44c242 !important;
 }

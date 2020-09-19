@@ -1,21 +1,42 @@
-import { Person } from '../models/person';
-import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
 export class PersonService {
-  private urlAPI;
-  constructor(
-    private _httpCliente: HttpClient,
-  ) {
-    this.urlAPI = environment.apiURL;
+  constructor(private firestore: AngularFirestore,
+  ) { }
+
+  /**
+   * Crea una persona
+   *
+   * @param {{ name: string, image: string, email: string, aboutMe: string }} data
+   * @returns
+   * @memberof PersonService
+   */
+  createPerson(data: { name: string, image: string, email: string, aboutMe: string }) {
+    return this.firestore.collection('person').add(data);
   }
-  requestPersonData$(_id: string): Observable<Person> {
-    let url = this.urlAPI + '/person?' + _id;
-    return this._httpCliente.get<Person>(url);
+
+  /**
+   * Obtiene una persona
+   *
+   * @memberof PersonService
+   */
+  getPerson$(documentId: string): Observable<any> {
+    return this.firestore.collection('person').doc(documentId).snapshotChanges();
   }
+
+  /**
+   * Obtiene la coleccion de personas
+   *
+   * @returns
+   * @memberof PersonService
+   */
+  getPeople$(): Observable<any> {
+    return this.firestore.collection('person').snapshotChanges();
+  }
+
 }

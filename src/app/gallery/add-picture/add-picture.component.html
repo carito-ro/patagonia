@@ -1,28 +1,31 @@
-<div class="row h-75 align-items-center justify-content-center">
+<div class="row h-75 align-items-center justify-content-center ">
   <div class="col-10 col-md-8 col-lg-6  ">
+    <div class="text-center">
+      <div *ngIf="spinner" class="spinner-border text-success" role="status">
+        <span class="sr-only">sending...</span>
+      </div>
+    </div>
     <div *ngIf="error" [ngClass]="error" class="alert alert-dismissible fade show" role="alert">
       <strong>{{message}}</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="card text-center">
+    <div class="card text-center shadow">
       <div class="card-body">
         <h5 class="card-title">Share image!!!</h5>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <input formControlName="title" class="form-control form-control-sm" type="text" placeholder="Title">
+            <input type="file" accept="image/*" class="form-control-file" (change)="onImageChange($event)" required>
           </div>
           <div class="form-group">
-            <label>Upload...</label>
-            <input type="file" accept="image/*" class="form-control-file" (change)="onImageChange($event)" required>
+            <input formControlName="title" class="form-control form-control-sm" type="text" placeholder="Title">
           </div>
           <div class="form-group">
             <button class="btn btn-outline-secondary" type="submit" [disabled]="form.invalid "
               id="inputGroupFileAddon03">Submit</button>
           </div>
         </form>
-
       </div>
     </div>
   </div>
