@@ -12,6 +12,12 @@ import { environment } from '../environments/environment';
 import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es-AR';
 registerLocaleData(localeEs, 'es-AR');
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,11 +30,16 @@ registerLocaleData(localeEs, 'es-AR');
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    PerfectScrollbarModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    { provide: LOCALE_ID, useValue: 'es-AR' }],
+    { provide: LOCALE_ID, useValue: 'es-AR' },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
