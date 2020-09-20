@@ -1,10 +1,12 @@
 # Patagonia
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
+## Install dependencies 
+Ejecutar `npm install` en el repositorio principal
 
 ## Development server
 
-Ejecutar `ng serve` en consola. Navegar a http://localhost:4200/
+Ejecutar `ng serve` en consola. Navegar a la APP http://localhost:4200/
 
 ## Build
 
